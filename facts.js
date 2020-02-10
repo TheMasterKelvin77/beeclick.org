@@ -62,46 +62,46 @@ facts = {"Facts" : [
 ],
 
 "pre-synth" : [
-"Your bees are happy",
+"Your bees are happy.",
 "Your bees are free", 
 "The bee population is rising due to conservation efforts.",
-"Your bees are healthy",
+"Your bees are healthy.",
 "Honey sales are up!",
-"Flower pollination is up", 
+"Flower pollination is up.", 
 "Great News! People love your homegrown honey.",
 "Your bees only pollinate non-GMO flowers.",
 "Your honey is approved by the FDA!", 
-"People are bees are getting along well",
+"People are bees are getting along well.",
 "Bees are the best friends of humanity.", 
 "Your bees are equal.",
-"Your bees are not racist",
-"Your bees are progressive", 
-"Woman marries bee",
-"Barry Benson runs for president",
-"Dog in costume mistaken for bee"
+"Your bees are not racist.",
+"Your bees are progressive.", 
+"Woman marries bee.",
+"Barry Benson runs for president.",
+"Dog in costume mistaken for bee."
 ],
 
 "post-synth" : [
-"Bees are growing angry",
-"Bee related accidents are on the rise",
-"Bees carry off small child",
+"Bees are growing angry.",
+"Bee related accidents are on the rise.",
+"Bees carry off small child.",
 "Bee populations are declining due to unknown reasons.",
-"Flowers are starting to wilt", 
-"Homegrown honey in demand", 
-"Several species are going excint",
-"Synthetic honey producers offer no comments about declining bee population",
-"Bees are dying slowly", 
+"Flowers are starting to wilt.", 
+"Homegrown honey in demand.", 
+"Several species are going excint.",
+"Synthetic honey producers offer no comments about declining bee population.",
+"Bees are dying slowly.", 
 "Bee related marriages are outlawed."
 
 ],
 
 "post-genocide" : [
-"Several species of flowers are now extinct",
-"Homegrown honey is a rare treasure", 
-"Bee related incidents are at a all time low",
+"Several species of flowers are now extinct.",
+"Homegrown honey is a rare treasure.", 
+"Bee related incidents are at an all time low.",
 "Bees are extinct!",
-"Humanity is dying",
-"Scientists belive extinction of bees to impact the earth permanently",
-"Massive wildlife extinction",
-"Humanity is on brink of war"
+"Humanity is dying.",
+"Scientists belive extinction of bees to impact the earth permanently.",
+"Massive wildlife extinction.",
+"Humanity is on the brink of war."
 ]}
