@@ -43,18 +43,18 @@ class GameClass {
     getUpgradePurchasable(name) {
         var upgrade = Game.upgrades[name];
 
-        if (upgrade.id < 5 && Game.era == "Super Factories") {
+        if (upgrade.id < 5 && Game.era == "Super Factory") {
             // in this era, bees are dead. "Honeycomb"--"Farm" can't be bought
             return false;
         }
 
-        if (upgrade.id >= 5 && upgrade.id <= 7 && Game.upgrades[Game.era].id >= Game.upgrades["Don't Lose Your Way"].id) {
+        if (upgrade.id >= 5 && upgrade.id <= 7 && Game.upgrades[Game.era].id >= Game.upgrades["Dont Lose Your Way"].id) {
             // after destroying synthetic processes to bring the bees back, "Synthetic Honey"--"Factories" can't be bought
             return false;
         }
 
         if (upgrade.id >= 8 && upgrade.count > 0) {
-            // "Don't lose your way" and "Beetopia" can each only be bought once
+            // "Dont Lose Your Way" and "Beetopia" can each only be bought once
             return false;
         }
 
@@ -126,7 +126,7 @@ class GameClass {
             }
 
             if (Game.upgrades[name].id == 8) {
-                // if buying "Don't Lose Your Way", lose all non-bee-related upgrades
+                // if buying "Dont Lose Your Way", lose all non-bee-related upgrades
                 for (var upgradeIndex in Game.upgrades) {
                     var upgrade = Game.upgrades[upgradeIndex];
                     if (upgrade.id >= 5 && upgrade.id<=7) {
@@ -238,7 +238,7 @@ function updateDisplay() {
         }
 
         if (Game.upgrades[Game.era].id >= 6 && Game.upgrades[Game.era].id <= 8) {
-            // "Humane Farm"--"Don't Lose Your Way"
+            // "Humane Farm"--"Dont Lose Your Way"
             $("#icons").css("background-position", "-1024px 0px")
         }
 
@@ -288,9 +288,9 @@ function updateDisplay() {
                 while (upgrade.countshown < upgrade.count) {
                     upgrade.countshown++;
                     // use some randomness so the icons are staggered as they appear left to right in their respective panel
-                    var left = Math.round(Math.random() * 3 - 1.5 + upgrade.countshown * 30 - 30) % 462;
+                    var left = Math.round(Math.random() * 3 - 1.5 + upgrade.countshown * 30 - 30) % 470;
                     // % will loop the icons and keep them from going off the page to the right if a lot are bought.
-                    // (width of panel is 512px but each sprite is 48px wide)
+                    // (width of panel is 512px but each sprite is ~48px wide)
                     var top = Math.round(5 + Math.random() * 8 - 4 + upgrade.id * 64);
                     $("#icons").append(
                         "<div class='upgradeFake' id='upgradeFake" + upgrade.id +"" + upgrade.count + "' style='position:absolute; left: " + left + "px; top: " + top + "px; background-position: -" + upgrade.spritePos[0] * 48 + "px -" +  + upgrade.spritePos[1] * 48 + "px;'></div>"
@@ -415,9 +415,11 @@ new Upgrade("Sanctuary", "But what if we combined multiple apiaries together?", 
 new Upgrade("Farm", "OK, now this is going a bit far.", 2000, 1250, 150, [4,0]);
 new Upgrade("Synthetic Honey", "A technological breakthrough allows you to create honey without the need for bees at all.", 5000, 2250, 500, [5,0]);
 new Upgrade("Humane Farm", "By crushing old bees, you find that you can extract extra bits of honey out of them.</br><b>Your old bee ways will be replaced with superior technology.</b>",20000 , 12500, 1000, [6,0]);
-new Upgrade("Super Factories", "These super factories completely elimate the need for bees.</br><b>Bees will no longer be needed for anything.</b>", 200000, 122500, 2500, [7,0]);
-new Upgrade("Don't Lose Your Way", "On the brink of world collapse, you find a few remaining bees in one of your Humane Farms.</br><b>You can bring them back, but you'll have to destroy your synthetic progress</b>", 10, 1000000, 0, [8,0]);
+new Upgrade("Super Factory", "These super factories completely elimate the need for bees.</br><b>Bees will no longer be needed for anything.</b>", 200000, 122500, 2500, [7,0]);
+new Upgrade("Dont Lose Your Way", "On the brink of world collapse, you find a few remaining bees in one of your Humane Farms.</br><b>You can bring them back, but you'll have to destroy your synthetic progress</b>", 10, 1000000, 0, [8,0]);
 new Upgrade("Beetopia", "The bees are back, and they love you.</br><b>You notice that the bees are producing more than ever before.</b>", 10000000, 5000000, 0, [9,0]);
+
+//NOTE: putting in the apostrophe in "Don't Lose Your Way" breaks everything. Leave it out.
 
 //Main
 $(document).ready(function(){
