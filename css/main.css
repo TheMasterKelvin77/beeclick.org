@@ -141,12 +141,12 @@ body {
 
 #cheatButton{
     position: absolute;
-    left:150px;
+    left:200px;
     bottom:10px;
 }
 
 #cheatButton a{
-    color:#000000;
+    color:#5f0202;
     text-decoration: none;
     font-size:2em;
     font-family: CustomFont, sans-serif;
@@ -160,7 +160,7 @@ body {
 
 #rightSide {
     right:10px;
-    width:35%;
+    width:30%;
     height:90%;
     position: absolute;
     background: #7e6d38;
