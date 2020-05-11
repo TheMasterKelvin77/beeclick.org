@@ -234,14 +234,15 @@ function updateDisplay() {
     });
 
     // display the click hotkeys if displayHotkeys is enabled (or turn off if disabled)
-    lastDisplay = !Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
-    newDisplay = Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
-    $({ n: lastDisplay }).animate({ n: newDisplay}, {
-        duration: 200,
-        step: function(now, fx) {
-            $("#clickHotkeyDisplay").html(now);
-        }
-    });
+        // lastDisplay = !Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
+        // newDisplay = Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
+        // $({ n: lastDisplay }).animate({ n: newDisplay}, {
+        //     duration: 200,
+        //     step: function(now, fx) {
+        //         $("#clickHotkeyDisplay").html(now);
+        //     }
+        // });
+    $("#clickHotkeyDisplay").html(Game.displayHotkeys ? "(SPACE or ENTER to click)" : "");
 
     // update the icon backgrounds depending on the era.
     // each panel is 512px wide by 64px tall. 8 panels per background. 3 different backgrounds.
@@ -286,7 +287,7 @@ function updateDisplay() {
             }
 
             // update displayed hotkeys (show or hide based on Game.displayHotkeys)
-            upgradehtml.find("#upgradeHotkey"+upgrade.id).text(Game.displayhotkeys ? upgrade.id : "");
+            upgradehtml.find("#upgradeHotkey"+upgrade.id).text(Game.displayhotkeys ? Number(upgrade.id).toLocaleString() : "");
 
             // update displayed count of each upgrade
             if (upgrade.id >= 8) {
