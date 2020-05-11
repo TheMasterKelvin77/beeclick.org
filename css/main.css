@@ -82,6 +82,21 @@ body {
     padding: 5px;
 }
 
+#clickHotkeyDisplay {
+    font-size: 1em;
+    font-family: CustomFont, sans-serif;
+    color: #ffffff;
+    
+    text-shadow:
+    -1px -1px 0 #444,  
+     1px -1px 0 #444,
+     -1px 1px 0 #444,
+      1px 1px 0 #444;
+      
+    text-align: center;
+    padding: 5px;
+}
+
 #facts{
     width: 85%;
     height: 30%;
@@ -124,12 +139,25 @@ body {
 
 #cheatButton{
     position: absolute;
-    left:200px;
+    left:210px;
     bottom:10px;
 }
 
 #cheatButton a{
     color:#5f0202;
+    text-decoration: none;
+    font-size:2em;
+    font-family: CustomFont, sans-serif;
+}
+
+#hotkeysButton{
+    position: absolute;
+    left:350px;
+    bottom:10px;
+}
+
+#hotkeysButton a{
+    color:#000000;
     text-decoration: none;
     font-size:2em;
     font-family: CustomFont, sans-serif;

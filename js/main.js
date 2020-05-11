@@ -7,7 +7,7 @@ class GameClass {
         this.ownedUpgrades = [];
         this.era = "Honeycomb";
         this.eraChange = false;
-
+        this.displayHotkeys = false;
         this.clickMultiplier = 1;
         this.ready = false;
     }
@@ -233,6 +233,9 @@ function updateDisplay() {
         }
     });
 
+    // display the click hotkeys if enabled
+    $("#clickHotkeyDisplay").html(Game.displayHotkeys ? "(SPACE or ENTER to click)" : "");
+
     // update the icon backgrounds depending on the era.
     // each panel is 512px wide by 64px tall. 8 panels per background. 3 different backgrounds.
     if (Game.eraChange) {
@@ -306,7 +309,7 @@ function updateDisplay() {
         // add the upgrade as a displayed purchase option for the first time
         if (upgrade.showing == 1) {
             var newRow = $("<tr id='upgrade" + upgrade.id + "' style='color:#999;'>"
-                +"<td>" + upgrade.id + "</td>"
+                + (Game.displayhotkeys ? "<td>" + upgrade.id + "</td>" : "")
                 +"<td><div class='upgrade' title = \"" + upgrade.desc + "\" onclick='Game.buyUpgrade(\"" + upgrade.name + "\")' style='background-position: -" + upgrade.spritePos[0] * 48 + "px -" +  + upgrade.spritePos[1] * 48 + "px;'></div></td>"
                 +"<td id='upgradeCount" + upgrade.id + "'>" + upgrade.name + " (" + upgrade.count + ")</td>"
                 +"<td class='currency' id='upgradePrice" + upgrade.id + "'>" + Number(upgrade.price).toLocaleString() + "</td>"
@@ -363,6 +366,7 @@ function readSave() {
     if(localStorage.key("save")) {
         Game.honey = Number(localStorage.getItem("honey"));
         Game.era = localStorage.getItem("era");
+        Game.displayHotkeys = localStorage.getItem("display_hotkeys");
         for (x in Game.upgrades) {
             Game.upgrades[x].count = Number(localStorage.getItem(x));
         }
@@ -378,6 +382,12 @@ function resetProgress() {
         localStorage.clear();
         location.reload();
     }
+}
+
+// when user presses "Hotkeys" button, enable/disable hotkey displays
+function flipHotkeyDisplay() {
+    Game.displayHotkeys = !Game.displayHotkeys;
+    updateDisplay();
 }
 
 function factloop() {
@@ -406,6 +416,7 @@ function factloop() {
     localStorage.setItem("save", true);
     localStorage.setItem("honey", Game.honey);
     localStorage.setItem("era", Game.era);
+    localStorage.setItem("display_hotkeys", Game.displayHotkeys);
     for (x in Game.upgrades) {
         localStorage.setItem(x, Game.upgrades[x].count);
     }
