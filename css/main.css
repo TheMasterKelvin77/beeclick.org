@@ -124,12 +124,25 @@ body {
 
 #cheatButton{
     position: absolute;
-    left:200px;
+    left:225px;
     bottom:10px;
 }
 
 #cheatButton a{
     color:#5f0202;
+    text-decoration: none;
+    font-size:2em;
+    font-family: CustomFont, sans-serif;
+}
+
+#autoplayButton{
+    position: absolute;
+    left:350px;
+    bottom:10px;
+}
+
+#autoplayButton a{
+    color:#10025c;
     text-decoration: none;
     font-size:2em;
     font-family: CustomFont, sans-serif;

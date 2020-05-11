@@ -346,8 +346,12 @@ function setupBigBee() {
 }
 
 // runs on the global timer.
-// add passive honey from all the upgrades.
 function loop() {
+    // run the autoplay if it is enabled
+    if (runAutoplay) {
+        autoplay();
+    }
+    // add passive honey from all the upgrades.
     var honeyToAdd = 0;
     for (var x in Game.upgrades) {
         var upgrade = Game.upgrades[x];
@@ -377,6 +381,11 @@ function resetProgress() {
         localStorage.clear();
         location.reload();
     }
+}
+
+var runAutoplay = false;
+function autoplayPress() {
+    runAutoplay = !runAutoplay;
 }
 
 function factloop() {
