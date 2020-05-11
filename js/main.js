@@ -233,17 +233,15 @@ function updateDisplay() {
         }
     });
 
-    // display the hotkeys to click if displayHotkeys is enabled (or turn off if disabled)
+    // display the click hotkeys if displayHotkeys is enabled (or turn off if disabled)
     lastDisplay = !Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
     newDisplay = Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
     $({ n: lastDisplay }).animate({ n: newDisplay}, {
         duration: 200,
         step: function(now, fx) {
-            $("#honeyDisplay").html(now);
+            $("#clickHotkeyDisplay").html(now);
         }
     });
-
-    $("#clickHotkeyDisplay").html(Game.displayHotkeys ? "(SPACE or ENTER to click)" : "");
 
     // update the icon backgrounds depending on the era.
     // each panel is 512px wide by 64px tall. 8 panels per background. 3 different backgrounds.
@@ -287,6 +285,9 @@ function updateDisplay() {
                 upgradehtml.attr("style", "")
             }
 
+            // update displayed hotkeys (show or hide based on Game.displayHotkeys)
+            upgradehtml.find("#upgradeHotkey"+upgrade.id).text(Game.displayhotkeys ? upgrade.id : "");
+
             // update displayed count of each upgrade
             if (upgrade.id >= 8) {
                 // these upgrades are each a one-time-purchase
@@ -318,7 +319,7 @@ function updateDisplay() {
         // add the upgrade as a displayed purchase option for the first time
         if (upgrade.showing == 1) {
             var newRow = $("<tr id='upgrade" + upgrade.id + "' style='color:#999;'>"
-                + (Game.displayhotkeys ? "<td>" + upgrade.id + "</td>" : "")
+                +"<td id='upgradeHotkey" + upgrade.id + "'>" + (Game.displayhotkeys ? upgrade.id : "") + "</td>"
                 +"<td><div class='upgrade' title = \"" + upgrade.desc + "\" onclick='Game.buyUpgrade(\"" + upgrade.name + "\")' style='background-position: -" + upgrade.spritePos[0] * 48 + "px -" +  + upgrade.spritePos[1] * 48 + "px;'></div></td>"
                 +"<td id='upgradeCount" + upgrade.id + "'>" + upgrade.name + " (" + upgrade.count + ")</td>"
                 +"<td class='currency' id='upgradePrice" + upgrade.id + "'>" + Number(upgrade.price).toLocaleString() + "</td>"
