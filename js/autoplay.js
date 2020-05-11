@@ -12,10 +12,7 @@ function autoplay() {
     //     e.which = 32; // spacebar
     //     $(document).trigger(e);
     // });
-    var e = $.Event('keypress');
-    e.which = 32; // spacebar
-    $(document).trigger(e);
-    // easy way if this doesn't work -> Game.clicky();
+    Game.clicky();
 
     // save money to afford "Beetopia" before buying "Dont Lose Your Way"
     if (Game.upgrades[Game.era].id == 7 && Game.upgrades["Super Factory"].count >= 10) {
