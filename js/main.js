@@ -8,16 +8,18 @@ class GameClass {
         this.era = "Honeycomb";
         this.eraChange = false;
 
-        this.clickmultiplier = 0;
+        this.clickMultiplier = 1;
+        this.ready = false;
     }
 
     clicky() {
-        if (Game.era == "Beetopia") {
-            this.honey += 100
-        }
-        else {
-            this.honey += 1;
-        }
+        // if (Game.era == "Beetopia") {
+        //     this.honey += 100
+        // }
+        // else {
+        //     this.honey += 1;
+        // }
+        this.honey += this.clickMultiplier;
     }
 
     addHoney(honey) {
@@ -95,8 +97,8 @@ class GameClass {
                 Game.eraChange = true;
             }
 
-            if (Game.upgrades[name].id == 6) {
-                // if buying a "Humane Farm", lose some random bee-related upgrades
+            if (Game.upgrades[name].id == 6) { // buying a "Humane Farm"
+                // lose some random bee-related upgrades
                 for (var upgradeIndex in Game.upgrades) {
                     var upgrade = Game.upgrades[upgradeIndex];
                     if (upgrade.id <= 4 && Math.random() > 0.5) {
@@ -109,9 +111,8 @@ class GameClass {
                     }
                 }
             }
-
-            if (Game.upgrades[name].id == 7) {
-                // if buying a "Super Factory", lose all bee-related upgrades
+            else if (Game.upgrades[name].id == 7) { // buying a "Super Factory"
+                // lose all bee-related upgrades
                 for (var upgradeIndex in Game.upgrades) {
                     var upgrade = Game.upgrades[upgradeIndex];
                     if (upgrade.id <= 4) {
@@ -124,9 +125,8 @@ class GameClass {
                     }
                 }
             }
-
-            if (Game.upgrades[name].id == 8) {
-                // if buying "Don't Lose Your Way", lose all non-bee-related upgrades
+            else if (Game.upgrades[name].id == 8) { // buying "Don't Lose Your Way"
+                // lose all non-bee-related upgrades
                 for (var upgradeIndex in Game.upgrades) {
                     var upgrade = Game.upgrades[upgradeIndex];
                     if (upgrade.id >= 5 && upgrade.id<=7) {
@@ -138,6 +138,10 @@ class GameClass {
                         Game.updatePrice(upgradeIndex);
                     }
                 }
+            }
+            else if (Game.upgrades[name].id == 9) { // buying "Beetopia"
+                // set the click multiplier to 100
+                this.clickMultiplier = 100;
             }
 
             updateDisplay();
@@ -340,7 +344,8 @@ function setupBigBee() {
     );
 }
 
-// add passive honey from all the upgrades
+// runs on the global timer.
+// add passive honey from all the upgrades.
 function loop() {
     var honeyToAdd = 0;
     for (var x in Game.upgrades) {
@@ -363,6 +368,7 @@ function readSave() {
         Game.eraChange = true;
         updateDisplay();
     }
+    Game.ready = true;
 }
 
 function resetProgress() {
@@ -417,6 +423,35 @@ new Upgrade("Humane Farm", "By crushing old bees, you find that you can extract 
 new Upgrade("Super Factories", "These super factories completely elimate the need for bees.</br><b>Bees will no longer be needed for anything.</b>", 200000, 122500, 2500, [7,0]);
 new Upgrade("Don't Lose Your Way", "On the brink of world collapse, you find a few remaining bees in one of your Humane Farms.</br><b>You can bring them back, but you'll have to destroy your synthetic progress</b>", 10, 1000000, 0, [8,0]);
 new Upgrade("Beetopia", "The bees are back, and they love you.</br><b>You notice that the bees are producing more than ever before.</b>", 10000000, 5000000, 0, [9,0]);
+
+// setup hotkeys to control the game with the keyboard
+$(document).keypress(function() {
+    if (!Game.ready) { return; }
+
+    if (event.which == 13 || event.which == 32) {  // enter or spacebar
+        Game.clicky();
+    } else if (event.which == 48 || event.which == 96) { // 0 or numpad 0
+        Game.buyUpgrade("Honeycomb");
+    } else if (event.which == 49 || event.which == 97) { // 1
+        Game.buyUpgrade("Hive");
+    } else if (event.which == 50 || event.which == 98) { // 2
+        Game.buyUpgrade("Apiary");
+    } else if (event.which == 51 || event.which == 99) { // 3
+        Game.buyUpgrade("Sanctuary");
+    } else if (event.which == 52 || event.which == 100) { // 4
+        Game.buyUpgrade("Farm");
+    } else if (event.which == 53 || event.which == 101) { // 5
+        Game.buyUpgrade("Synthetic Honey");
+    } else if (event.which == 54 || event.which == 102) { // 6
+        Game.buyUpgrade("Humane Farm");
+    } else if (event.which == 55 || event.which == 103) { // 7
+        Game.buyUpgrade("Super Factory");
+    } else if (event.which == 56 || event.which == 104) { // 8
+        Game.buyUpgrade("Dont Lose Your Way");
+    } else if (event.which == 57 || event.which == 105) { // 9
+        Game.buyUpgrade("Beetopia");
+    }
+});
 
 //Main
 $(document).ready(function(){
