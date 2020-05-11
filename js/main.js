@@ -383,11 +383,6 @@ function resetProgress() {
     }
 }
 
-var runAutoplay = false;
-function autoplayPress() {
-    runAutoplay = !runAutoplay;
-}
-
 function factloop() {
     var eraToRead = "Facts";
     
