@@ -306,6 +306,7 @@ function updateDisplay() {
         // add the upgrade as a displayed purchase option for the first time
         if (upgrade.showing == 1) {
             var newRow = $("<tr id='upgrade" + upgrade.id + "' style='color:#999;'>"
+                +"<td>" + upgrade.id + "</td>"
                 +"<td><div class='upgrade' title = \"" + upgrade.desc + "\" onclick='Game.buyUpgrade(\"" + upgrade.name + "\")' style='background-position: -" + upgrade.spritePos[0] * 48 + "px -" +  + upgrade.spritePos[1] * 48 + "px;'></div></td>"
                 +"<td id='upgradeCount" + upgrade.id + "'>" + upgrade.name + " (" + upgrade.count + ")</td>"
                 +"<td class='currency' id='upgradePrice" + upgrade.id + "'>" + Number(upgrade.price).toLocaleString() + "</td>"
