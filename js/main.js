@@ -233,7 +233,16 @@ function updateDisplay() {
         }
     });
 
-    // display the click hotkeys if enabled
+    // display the hotkeys to click if displayHotkeys is enabled (or turn off if disabled)
+    lastDisplay = !Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
+    newDisplay = Game.displayHotkeys ? "(SPACE or ENTER to click)" : "";
+    $({ n: lastDisplay }).animate({ n: newDisplay}, {
+        duration: 200,
+        step: function(now, fx) {
+            $("#honeyDisplay").html(now);
+        }
+    });
+
     $("#clickHotkeyDisplay").html(Game.displayHotkeys ? "(SPACE or ENTER to click)" : "");
 
     // update the icon backgrounds depending on the era.
