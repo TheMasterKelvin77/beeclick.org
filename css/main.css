@@ -23,6 +23,19 @@ body {
     background-image: url(../img/bee-clicker-upgrades.png);
 }
 
+.color-overlay { 
+    /*  from https://codepen.io/ieatwebsites/pen/wpJmXo.
+        might be able to use this to do color overlay.
+        problem is it seems this must be evoked in HTML, not JS, 
+        so can't have a different color for each upgrade icon like I want for rave mode.
+    */
+    width: 100%;
+    height: 100%;
+    background: blue;
+    opacity: .6;
+    position: absolute;
+  }
+
 #octocat {
     position: absolute;
     left:10px;
