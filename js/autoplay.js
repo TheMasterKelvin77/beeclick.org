@@ -9,10 +9,11 @@ var gamePhase = 1;
 // phase 1 = buy available upgrades prior to "Dont Lose Your Way".
 // phase 2 = once we have at least 10 "Super Factory", save money to afford "Don't Lose Your Way" and "Beetopia".
 // phase 3 = buy "Don't Lose Your Way" and "Beetopia".
-// phase 4 = we are in Beetopia. buy all available upgrades.
+// phase 4 = we are in Beetopia era. buy all available upgrades.
 function autoplay() {
     // click the bee
-    jQuery.event.trigger({ type: 'keypress', which: 32 }); //spacebar
+    //jQuery.event.trigger({ type: 'keypress', which: 32 }); //spacebar
+    Game.honey += Game.clickMultiplier;
 
     // check and update gamePhase
     if (gamePhase == 1 && Game.upgrades["Super Factory"].count >= 10) {

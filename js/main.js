@@ -13,12 +13,6 @@ class GameClass {
     }
 
     clicky() {
-        // if (Game.era == "Beetopia") {
-        //     this.honey += 100
-        // }
-        // else {
-        //     this.honey += 1;
-        // }
         this.honey += this.clickMultiplier;
     }
 
