@@ -285,8 +285,8 @@ function updateDisplay() {
             if (upgrade.countshown < upgrade.count && upgrade.id <= 7) { //upgrade.id <= 7 to exclude redemption arc
                 while (upgrade.countshown < upgrade.count) {
                     upgrade.countshown++;
-                    // figure out how much space we have 
-                    var iconFrameWidth = screen.width * 0.4;
+                    // figure out how much space we have (icon bg is 90% of middleSide, which is 35% of screen width)
+                    var iconFrameWidth = screen.width * 0.35 * 0.9;
                     // use some randomness so the icons are staggered as they appear left to right in their respective panel
                     var left = Math.round(Math.random() * 3 - 1.5 + upgrade.countshown * 30 - 30) % (iconFrameWidth - 42);
                     // % will loop the icons and keep them from going off the page to the right if a lot are bought.
